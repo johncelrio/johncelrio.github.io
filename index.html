@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>John Cel Rio — Video Editor</title>
+
+  <meta
+    name="description"
+    content="Professional video editor portfolio — cinematic edits, social media content, promotional videos and more."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #080808;
+      --surface: #111111;
+      --surface-light: #181818;
+      --text: #f5f5f5;
+      --muted: #999999;
+      --border: rgba(255, 255, 255, 0.1);
+      --accent: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 22px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      background: rgba(8, 8, 8, 0.75);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 6% 80px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      background:
+        radial-gradient(
+          circle at 80% 30%,
+          rgba(255,255,255,0.08),
+          transparent 35%
+        );
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      max-width: 950px;
+      font-size: clamp(55px, 9vw, 125px);
+      line-height: 0.95;
+      letter-spacing: -6px;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: #777;
+    }
+
+    .hero-description {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 17px;
+      margin-top: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      padding: 14px 22px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .button.primary {
+      background: white;
+      color: black;
+      border-color: white;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    /* SECTION */
+
+    section {
+      padding: 120px 6%;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 50px;
+      gap: 30px;
+    }
+
+    .section-number {
+      color: #555;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(36px, 5vw, 65px);
+      line-height: 1;
+      letter-spacing: -3px;
+    }
+
+    .section-description {
+      max-width: 400px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* SHOWREEL */
+
+    .showreel {
+      position: relative;
+      min-height: 600px;
+      border-radius: 16px;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          120deg,
+          rgba(0,0,0,0.9),
+          rgba(0,0,0,0.3)
+        ),
+        url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1800&q=85")
+        center / cover;
+    }
+
+    .showreel-content {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+      padding: 30px;
+    }
+
+    .play-button {
+      width: 90px;
+      height: 90px;
+
+      border-radius: 50%;
+      background: white;
+      color: black;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 25px;
+      margin-bottom: 25px;
+
+      transition: 0.3s;
+    }
+
+    .play-button:hover {
+      transform: scale(1.1);
+    }
+
+    .showreel h3 {
+      font-size: 30px;
+    }
+
+    .showreel p {
+      color: #bbb;
+      margin-top: 8px;
+    }
+
+    /* PROJECTS */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .project {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .project-image {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      height: 100%;
+      object-fit: cover;
+      transition: 0.6s;
+    }
+
+    .project:hover img {
+      transform: scale(1.05);
+    }
+
+    .project-info {
+      padding: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .project-info h3 {
+      font-size: 18px;
+    }
+
+    .project-info p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .project-arrow {
+      font-size: 22px;
+      color: #777;
+    }
+
+    /* SERVICES */
+
+    .services {
+      border-top: 1px solid var(--border);
+    }
+
+    .service {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr;
+      gap: 30px;
+
+      padding: 35px 0;
+      border-bottom: 1px solid var(--border);
+
+      align-items: center;
+    }
+
+    .service-number {
+      color: #555;
+      font-size: 14px;
+    }
+
+    .service h3 {
+      font-size: 24px;
+    }
+
+    .service p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .about-image img {
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .about-text h2 {
+      font-size: clamp(40px, 5vw, 65px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 25px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 20px;
+      max-width: 550px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+      padding: 160px 6%;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact h2 {
+      font-size: clamp(50px, 9vw, 120px);
+      letter-spacing: -6px;
+      line-height: 0.95;
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin: 25px auto;
+      max-width: 450px;
+    }
+
+    .contact-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 16px 28px;
+      background: white;
+      color: black;
+      border-radius: 100px;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 30px 6%;
+      border-top: 1px solid var(--border);
+
+      display: flex;
+      justify-content: space-between;
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 768px) {
+
+      nav {
+        padding: 18px 5%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 130px 5% 70px;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      section {
+        padding: 80px 5%;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .section-description {
+        margin-top: 20px;
+      }
+
+      .showreel {
+        min-height: 450px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .service {
+        grid-template-columns: 40px 1fr;
+      }
+
+      .service p {
+        grid-column: 2;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .contact {
+        padding: 110px 5%;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <a href="#" class="logo">JOHN CEL RIO.</a>
+
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="eyebrow">
+      Video Editor · Philippines
+    </div>
+
+    <h1>
+      I EDIT<br>
+      <span>STORIES.</span>
+    </h1>
+
+    <p class="hero-description">
+      Video editor focused on cinematic storytelling,
+      social media content, promotional videos, and
+      engaging visual experiences.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#work" class="button primary">
+        View My Work
+      </a>
+
+      <a href="#contact" class="button">
+        Let's Work Together
+      </a>
+    </div>
+
+  </header>
+
+
+  <!-- SHOWREEL -->
+
+  <section>
+
+    <div class="section-header">
+
+      <div>
+        <div class="section-number">01 — SHOWREEL</div>
+        <h2 class="section-title">Featured Work</h2>
+      </div>
+
+      <p class="section-description">
+        A selection of my editing style, transitions,
+        storytelling, pacing and visual direction.
+      </p>
+
+    </div>
+
+    <div class="showreel">
+
+      <div class="showreel-content">
+
+        <!-- Replace # with your YouTube/Vimeo/video link -->
+
+        <a href="#" class="play-button">
+          ▶
+        </a>
+
+        <h3>2026 Showreel</h3>
+
+        <p>
+          Video Editing · Motion · Storytelling
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROJECTS -->
+
+  <section id="work">
+
+    <div class="section-header">
+
+      <div>
+        <div class="section-number">02 — SELECTED WORK</div>
+        <h2 class="section-title">Projects</h2>
+      </div>
+
+      <p class="section-description">
+        A collection of selected projects across
+        different formats and styles.
+      </p>
+
+    </div>
+
+
+    <div class="projects">
+
+
+      <article class="project">
+
+        <div class="project-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=85"
+            alt="Cinematic video project"
+          >
+
+        </div>
+
+        <div class="project-info">
+
+          <div>
+            <h3>Cinematic Story</h3>
+            <p>Commercial · Color Grading</p>
+          </div>
+
+          <span class="project-arrow">↗</span>
+
+        </div>
+
+      </article>
+
+
+      <article class="project">
+
+        <div class="project-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1200&q=85"
+            alt="Social media video"
+          >
+
+        </div>
+
+        <div class="project-info">
+
+          <div>
+            <h3>Social Campaign</h3>
+            <p>Social Media · Short Form</p>
+          </div>
+
+          <span class="project-arrow">↗</span>
+
+        </div>
+
+      </article>
+
+
+      <article class="project">
+
+        <div class="project-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=85"
+            alt="Film editing project"
+          >
+
+        </div>
+
+        <div class="project-info">
+
+          <div>
+            <h3>Film Project</h3>
+            <p>Storytelling · Post Production</p>
+          </div>
+
+          <span class="project-arrow">↗</span>
+
+        </div>
+
+      </article>
+
+
+      <article class="project">
+
+        <div class="project-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1200&q=85"
+            alt="Video production project"
+          >
+
+        </div>
+
+        <div class="project-info">
+
+          <div>
+            <h3>Brand Content</h3>
+            <p>Advertising · Motion Graphics</p>
+          </div>
+
+          <span class="project-arrow">↗</span>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES -->
+
+  <section id="services">
+
+    <div class="section-header">
+
+      <div>
+        <div class="section-number">03 — SERVICES</div>
+        <h2 class="section-title">What I Do</h2>
+      </div>
+
+    </div>
+
+
+    <div class="services">
+
+      <div class="service">
+
+        <span class="service-number">01</span>
+
+        <h3>Video Editing</h3>
+
+        <p>
+          Clean cuts, pacing, storytelling,
+          sound design and professional finishing.
+        </p>
+
+      </div>
+
+
+      <div class="service">
+
+        <span class="service-number">02</span>
+
+        <h3>Short Form Content</h3>
+
+        <p>
+          Reels, TikTok, YouTube Shorts and
+          engaging social media content.
+        </p>
+
+      </div>
+
+
+      <div class="service">
+
+        <span class="service-number">03</span>
+
+        <h3>Color Grading</h3>
+
+        <p>
+          Cinematic color correction and grading
+          to create a consistent visual style.
+        </p>
+
+      </div>
+
+
+      <div class="service">
+
+        <span class="service-number">04</span>
+
+        <h3>Motion Graphics</h3>
+
+        <p>
+          Titles, animated graphics, transitions
+          and visual effects.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="about">
+
+      <div class="about-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1000&q=85"
+          alt="Video editor workspace"
+        >
+
+      </div>
+
+
+      <div class="about-text">
+
+        <div class="section-number">
+          04 — ABOUT ME
+        </div>
+
+        <h2>
+          Turning footage<br>
+          into stories.
+        </h2>
+
+        <p>
+          I'm a video editor passionate about turning
+          raw footage into content that feels intentional,
+          engaging and visually polished.
+        </p>
+
+        <p>
+          I focus on pacing, storytelling, music,
+          sound design, color and the small details
+          that make an edit feel professional.
+        </p>
+
+        <a href="#contact" class="button">
+          Work With Me
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="contact">
+
+    <div class="section-number">
+      05 — CONTACT
+    </div>
+
+    <h2>
+      HAVE A STORY<br>
+      TO TELL?
+    </h2>
+
+    <p>
+      Let's create something worth watching.
+      I'm available for freelance video editing projects.
+    </p>
+
+    <!-- Replace your email -->
+
+    <a
+      href="mailto:your@email.com"
+      class="contact-button"
+    >
+      Get In Touch →
+    </a>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <span>
+      © 2026 John Cel Rio
+    </span>
+
+    <span>
+      Video Editor · Philippines
+    </span>
+
+  </footer>
+
+</body>
+</html>
